@@ -6,11 +6,11 @@ session_start();
 $var_search=$_POST['thissearch'];
 //echo $var_search;
 
-$sql="select p.product_id,p.name,p.description,p.price,p.sku,s.company_name,p.status_id,stocks,date_added,u.unit_type
+$sql="SELECT p.product_id,p.name,p.description,p.price,p.sku,s.company_name,p.status_id,stocks,date_added,u.unit_type
 from tbl_product p
 join tbl_supplier s using(supplier_id)
 join tbl_pricing u on u.unit_id=p.price_type
-where p.name like '%$var_search%' or description like '%$var_search%';";
+where p.name like '%$var_search%' or description like '%$var_search%' or company_name like '%$var_search%';";
 $result = mysqli_query($connection, $sql);
 if(!$result ){
   echo "Error: " . $sql . "<br>" . $connection->error;
@@ -21,34 +21,7 @@ else {
 
 ?>
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-    <title>Light Bootstrap Dashboard by Creative Tim</title>
-
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-
-
-    <!-- Bootstrap core CSS     -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Animation library for notifications   -->
-    <link href="assets/css/animate.min.css" rel="stylesheet" />
-
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet" />
-
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
-
-
-    <!--     Fonts and icons     -->
-
-    <link href="fontawesome/css/all.css" rel="stylesheet">
-    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+  <?php include 'z_otherUI/mainhead.php' ?>
 </head>
 
 <body>
@@ -58,7 +31,67 @@ else {
 
 
         <div class="main-panel">
-            <?php include 'z_otherUI/navbar.php' ?>
+
+          <nav class="navbar navbar-default navbar-fixed">
+                          <div class="container-fluid">
+                              <div class="navbar-header">
+                                  <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                      data-target="#navigation-example-2">
+                                      <span class="sr-only">Toggle navigation</span>
+                                      <span class="icon-bar"></span>
+                                      <span class="icon-bar"></span>
+                                      <span class="icon-bar"></span>
+                                  </button>
+                                  <a  href="table.php"style="font-size: 30px; margin-top:-2px;" class="navbar-brand" ><i   class="fas fa-arrow-alt-square-left"></i></a>
+                              </div>
+                              <div class="collapse navbar-collapse">
+                                  <ul class="nav navbar-nav navbar-left">
+                                      <li>
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                              <i class="fa fa-dashboard"></i>
+                                              <p class="hidden-lg hidden-md">Dashboard</p>
+                                          </a>
+                                      </li>
+
+                                      <li>
+                                          <form id="searchform" method="POST" action="tablesearch.php" >  <!-- SEARCH INPUT -->
+                                            <input  id="myInput" name="thissearch" style="margin-top:10px;" class="form-control result" placeholder="Search Items">
+                                          </form>
+                                      </li>
+
+                                      <li>
+
+                                          <i style="border:0px;  font-size: 20px; padding:20px;" class="fa fa-search" aria-hidden="true" ></i>
+
+                                      </li>
+
+                                  </ul>
+
+                                  <ul class="nav navbar-nav navbar-right">
+
+                                      <li class="dropdown  ">
+                                          <a href="#" class="dropdown-toggle"  data-toggle="dropdown" >
+                                              <p>
+                                              <i class="fas fa-bars"></i>
+                                                      &nbsp;
+                                              </p>
+                                          </a>
+                                          <ul class="dropdown-menu">
+                                              <li><a href="./add_productform.php"><i style="font-size:16px;"class="fas fa-cubes"></i>&nbsp;Add Product</a></li>
+                                              <li><a href="./add_supplierform.php"><i class="fas fa-parachute-box"></i>&nbsp;Add Supplier</a></li>
+                                              <li><a href="#">Temp</a></li>
+                                              <li><a href="#">Temp</a></li>
+                                              <li><a href="#">Temp</a></li>
+                                              <li class="divider"></li>
+                                              <li><a href="#">Temp</a></li>
+                                          </ul>
+                                      </li>
+
+                                  </ul>
+                              </div>
+                          </div>
+                      </nav>
+
 
             <div class="content">
                 <div class="container-fluid">
