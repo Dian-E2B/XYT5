@@ -71,7 +71,7 @@ $execute = mysqli_query($connection, $sql2);
 
                             </div>
                             <div class="content">
-                        <!-- FORM1 --><form method="POST" action="checkout0.php">
+                        <!-- FORM1 --><form id="myForm1" method="POST" action="checkout0.php">
                                           <div class="row">
                                               <div class="col-md-4">
                                                   <div style="margin-bottom: 3px;" class="form-group">
@@ -125,16 +125,16 @@ $execute = mysqli_query($connection, $sql2);
                                            <div style="padding:5px"></div>
 
 
-                                           <input type="radio" onclick="show2();" name="discountsradio" value="senior1" clas> I am a senior citizen <br> <!-- SENIOR RADIO -->
+                                           <input id="radiosenior" type="radio" onclick="show2();" name="discountsradio" value="senior1" > I am a senior citizen <br> <!-- SENIOR RADIO -->
                                            <div id="showseniorinput" style="display:none;">
-                                             <input name="thisaccount" style="width:200px;" autocomplete="off" autofill="on" type="text"  class="setizeninput form-control"  placeholder="Name">
+                                             <input name="thisaccount" required style="width:200px;" autocomplete="off" autofill="on" type="text"  class="setizeninput form-control"  placeholder="Senior Citizen Card ID">
                                              <div style="padding:5px"></div>
-                                              <input name="thiscardid" style="width:200px;" autocomplete="on" autofill="on" type="text"  class="setizeninput form-control"  placeholder="Senior Citizen Card ID">
+                                              <input id="bdate" name="thiscardid" required style="width:200px;" autocomplete="off" autofill="on" type="date"  class="setizeninput form-control"  placeholder="Birth Date">
                                             </div>
                                          </fieldset>
                                          </div>
                                        </div>
-    <!-- SUBMIT FORM1 -->               <button name="submitcustomer" type="submit" class="btn btn-info btn-fill pull-right")>Apply</button>
+    <!-- SUBMIT FORM1 -->               <button type="button" class="btn btn-info btn-fill pull-right" onclick="getInputValue();")>Apply</button>
                                          <div class="clearfix"></div>
                                   </form>
                                   <!-- FORM1 -->
@@ -305,7 +305,35 @@ function show4(){
   document.getElementById("paymentinput").style.display = 'block';
 }
 
+document.getElementById('getYearsBtn').addEventListener('click', function () {
+  var enteredDate = document.getElementById('sampleDate').value;
+  // Below one is the single line logic to calculate the no. of years...
 
+});
+
+
+function getInputValue(){
+    if(document.getElementById('radiosenior').checked) {
+  var inputVal = document.getElementById("bdate").value;
+
+    var years = new Date(new Date() - new Date(inputVal)).getFullYear() - 1970;
+//
+  //  var integer1 = parseInt(years, 10);
+
+          if (years >= 60){
+          //  alert("Age Confirmed.");
+            document.getElementById("myForm1").submit();
+          }
+          else {
+            //alert(years);
+            alert("You're just " + years + " old!");
+
+          }
+}
+else {
+  document.getElementById("myForm1").submit();
+}
+}
 
 </script>
 

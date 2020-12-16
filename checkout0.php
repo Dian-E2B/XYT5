@@ -30,7 +30,7 @@ $execute = mysqli_query($connection, $sql2);
 
 
 
-if(isset($_POST['submitcustomer'])){
+if(isset($_POST['thisclientname'])){
         $sql6="select max(customer_id) as maxcusid from tbl_customer;";
         $result6 = mysqli_query($connection, $sql6);
         $row6 = mysqli_fetch_assoc($result6);//get max
@@ -407,7 +407,7 @@ $var_supertotal=$var_total-$var_discountload;
   var intege2 = parseInt(inputVal2, 10);
 
   if (integer1<intege2){
-    alert("Invalid Cash. Must be higher than total ammount");
+    alert("Invalid Cash. Must be higher than total amount");
   }
   else {
      document.getElementById("myForm").submit();
@@ -417,7 +417,7 @@ $var_supertotal=$var_total-$var_discountload;
 
 
         }
-      
+
   </script>
 
 

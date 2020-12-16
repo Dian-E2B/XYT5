@@ -29,18 +29,19 @@ if (isset($_POST['paymentradio'])){
     $sql_insertINSERT="insert INTO tbl_orderdetails(order_log_id,total,payment_id,customer_id,Date) Value ('$var_lastid2','$var_total','402','$var_lastee','$date_today');";
             if (mysqli_query($connection, $sql_insertINSERT)) {
                 echo "New record created successfully";
+                  echo "$var_lastid2";
 
               //INSERT INTO TBL_ORDERLINE AFTER
 
               $sqlappendorders="INSERT into tbl_orderline(order_log_id,product_id,qty) SELECT order_log_id,product_id,qty from tbl_cart;";
                 if (!mysqli_query($connection, $sqlappendorders)) {
-                  echo "Error: " . $sqlappendorders . "<br>" . mysqli_error($connection);
+                  echo "Error: 1 " . $sqlappendorders . "<br>" . mysqli_error($connection);
                 }
                 else{
 
                     $sqlclear="TRUNCATE TABLE tbl_cart";
                     if (!mysqli_query($connection, $sqlclear)) {
-                      echo "Error: " . $sqlclear . "<br>" . mysqli_error($connection);
+                      echo "Error: 2" . $sqlclear . "<br>" . mysqli_error($connection);
                     }else {
                        header("Location:./ordersummary.php");
                     }
@@ -64,17 +65,17 @@ if (isset($_POST['paymentradio'])){
                           $sqlappendorders="INSERT into tbl_orderline(order_log_id,product_id,qty) SELECT order_log_id,product_id,qty from tbl_cart;";
 
                           if (!mysqli_query($connection, $sqlappendorders)) {
-                            echo "Error: " . $sqlappendorders . "<br>" . mysqli_error($connection);
+                            echo "Error: 3" . $sqlappendorders . "<br>" . mysqli_error($connection);
                           }
                   $sql_insertcheque="insert INTO tbl_cheque(cheque_no,bank,amount,Branch,customer_id) Value ('$var_chequenum','$var_chequebank','$var_chequeamount','$var_chequebranch','$var_lastee');";
                     if (!mysqli_query($connection, $sql_insertcheque)) {
-                        echo "Error: " . $sql_insertcheque . "<br>" . mysqli_error($connection);
+                        echo "Error: 4" . $sql_insertcheque . "<br>" . mysqli_error($connection);
                     }
                     else{
 
                         $sqlclear="TRUNCATE TABLE tbl_cart";
                         if (!mysqli_query($connection, $sqlclear)) {
-                          echo "Error: " . $sqlclear . "<br>" . mysqli_error($connection);
+                          echo "Error: 5" . $sqlclear . "<br>" . mysqli_error($connection);
                         }else{
                              header("Location:./ordersummary.php");
                         }
@@ -82,7 +83,7 @@ if (isset($_POST['paymentradio'])){
                     }
 
               } else {
-                echo "Error: " . $sql_insertINSERT . "<br>" . mysqli_error($connection);
+                echo "Error:6 " . $sql_insertINSERT . "<br>" . mysqli_error($connection);
               }
 
   }

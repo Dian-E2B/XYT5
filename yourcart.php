@@ -44,48 +44,39 @@ input[type=none]:focus {
 
             <ul class="nav">
               <li>
-                  <a href="dashboard.html">
-                      <i class="pe-7s-graph"></i>
-                      <p>TEMP</p>
-                  </a>
+                <a href="reports.php">
+                  <i class="fas fa-chart-pie"></i>
+                    <p>Reports</p>
+                </a>
               </li>
               <li>
-              <a href="user.html">
-                  <i class="pe-7s-user"></i>
-                  <p>TEMP</p>
-              </a>
+                <a href="table.php">
+                    <i class="fad fa-clipboard"></i>
+                    <p>Product Lists</p>
+
+                </a>
               </li>
               <li>
 
-              <a href="table.php">
-                <i class="pe-7s-note2"></i>
-                <p>Product Lists</p>
-              </a>
+                <a href="supplier_table.php">
+                    <i class="fad fa-dolly"></i>
+                    <p>Suppliers</p>
+                </a>
 
             <li>
-              <a href="supplier_table.php">
-                <i class="pe-7s-news-paper"></i>
-                <p>Suppliers</p>
-              </a>
-            </li>
-            <li class="active">
               <a href="icons.php">
-                  <i class="pe-7s-cash"></i>
+                  <i class="fal fa-money-check-edit-alt"></i>
                   <p>Sales</p>
               </a>
             </li>
-            <li>
-              <a href="maps.html">
-                  <i class="pe-7s-map-marker"></i>
-                  <p>TEMP</p>
+            <li class="active">
+              <a href="ordersummary.php">
+                  <i class="fal fa-truck"></i>
+                  <p>Orders</p>
               </a>
             </li>
-            <li>
-              <a href="notifications.html">
-                  <i class="pe-7s-bell"></i>
-                  <pTEMP</p>
-              </a>
-            </li>
+
+            
           </ul>
         </div>
       </div>

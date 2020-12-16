@@ -45,12 +45,6 @@
                 <p>Orders</p>
             </a>
         </li>
-        <li>
-            <a style="display:none;" href="notifications.html">
-                <i class="pe-7s-bell"></i>
-                <p>TEMP</p>
-            </a>
-        </li>
     </ul>
 </div>
 </div>
