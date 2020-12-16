@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-</body>
+
 
 
 <nav class="navbar navbar-default navbar-fixed">
@@ -72,7 +71,7 @@
                     </div>
                 </div>
             </nav>
-</body>
+
 <!-- Bootstrap core JavaScript-->
 <script src="assets/js/jquery-3.5.1.min.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -95,4 +94,3 @@ input.addEventListener("keyup", function(event) {
   }
 });
 </script>
-</html>

@@ -11,7 +11,11 @@ $result = $connection->query($sqlshow_suppliers);
 <head>
     <?php include 'z_otherUI/mainhead.php' ?>
 </head>
-
+<style>
+body:not(.modal-open){
+  padding-right: 0px !important;
+}
+</style>
 <body>
     <div class="wrapper">
       <?php include 'z_otherUI/sidebar_suppliers.php' ?>

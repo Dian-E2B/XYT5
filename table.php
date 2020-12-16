@@ -41,9 +41,12 @@ session_start();
 ?>
 <head>
   <?php include 'z_otherUI/mainhead.php' ?>
-  <link href="datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
-
+<style>
+body:not(.modal-open){
+  padding-right: 0px !important;
+}
+</style>
 <body>
 
     <div class="wrapper">
@@ -163,7 +166,7 @@ session_start();
 
                                 </div>
                                 <!-- Modal content-->
-                                <div id="exampleModals" class="modal fade" data-backdrop="true">
+                                <div id="exampleModals" class="modal" >
                                     <div class="modal-dialog">
 
                                         <!-- Modal content-->
@@ -206,20 +209,18 @@ session_start();
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="assets/js/light-bootstrap-dashboard.js"></script>
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-<script src="datatables/jquery.dataTables.min.js"></script>
-  <script src="datatables/dataTables.bootstrap4.min.js"></script>
-  <script src="js/demo/datatables-demo.js"></script>
 <script>
 $(document).ready(function(){
   $(".dropdown-toggle").dropdown();
+
 });
-$(document).ready(function(){
-  $("mytable").DataTable();
-});
-$('#exampleModals').on('hide.bs.modal', function() {
-    $('#exampleModals').removeData();
-})
+
+
+//REMOVE MODAL DATA AFTER CLOSED
+
+
 $('#exampleModals').on('show.bs.modal', function(event) {
+
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = button.data('id') // Extract info from data-* attributes
     var modal = $(this);
@@ -230,15 +231,22 @@ $('#exampleModals').on('show.bs.modal', function(event) {
         url: "t.view_prodmodal.php",
         data: dataString,
         cache: false,
+
         success: function(data) {
-            console.log(data);
+            //console.log(data);
             modal.find('.dash').html(data);
         },
         error: function(err) {
-            console.log(err);
+            //console.log(err);
         }
     });
-})
+});
+
+$('#exampleModals').on('hide.bs.modal', function() {
+  $(this).find('form').trigger('reset');
+    $('#exampleModals').removeData();
+
+});
 
 function success() {
   $.notify({
@@ -267,24 +275,12 @@ function successadded() {
   });
 }
 
-// $(document).ready(function(){
-//
-//   $("#mytable td.count").each(function() {
-//          var countValue = parseInt($(this).html());
-//          var targetValue = parseInt($(this).siblings(".target").html());
-//
-//          if(countValue < 30) {
-//              if(((countValue-targetValue)/targetValue)*100 < 10) {
-//                  $(this).css("background", "yellow");
-//              } else {
-//                  $(this).css("background", "red");
-//              }
-//          } else {
-//              $(this).css("background", "green");
-//          }
-//      });
-// });
-
-
+var input = document.getElementById("myInput");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("myBtn").click();
+  }
+});
 </script>
 </html>
