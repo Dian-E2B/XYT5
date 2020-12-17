@@ -121,9 +121,10 @@ body:not(.modal-open){
                                             <th>Action</th>
                                         </thead>
                                         <tbody>
+                                          <?php  while($row = $result->fetch_assoc()) {
+                                      ?>
                                             <tr>
-                                                <?php  while($row = $result->fetch_assoc()) {
-                                            ?>
+
 
 
 
@@ -139,7 +140,7 @@ body:not(.modal-open){
                                                 <td style=" word-wrap: break-all;"><?php echo $row['sku']; ?></td>
                                                 <td class="" style=" word-wrap: break-word;"><?php echo $row['company_name']; ?></td>
                                                 <td class="" style="text-align:center;"><?php echo $row['status_id']; ?></td>
-                                                <td  id="stocks_color" class="stocks_color text-md-left" style="text-align:center; word-wrap: break-all; color:<?= ($row['stocks'] <= 30 ? 'red' : 'black'); ?>">
+                                                <td  id="stocks_color" class="stocks_color text-md-left" style="text-align:center; word-wrap: break-all; color:<?= ($row['stocks'] <= 30 ? 'red' : 'black') ?>; font-weight:<?= ($row['stocks'] <= 30 ? 'bold' : 'none') ?>;">
                                                     <?php echo $row['stocks']; ?></td>
 
                                                 <td><?php echo $row['date_added']; ?></td>
@@ -154,12 +155,13 @@ body:not(.modal-open){
                                                 </td>
 
                                             </tr>
+                                            <?php
+
+                                                }
+                                            ?>
                                         </tbody>
 
-                                        <?php
 
-                                            }
-                                        ?>
                                     </table>
 
                                 </div>
