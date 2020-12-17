@@ -75,13 +75,13 @@ else{
 		 </table>
 
 <form id="myForm" action="return.php" method="POST" >
-<input name="thisorderlog" value="<?php echo $row2['order_log_id']; ?>">
+<input style="display:none;" name="thisorderlog" value="<?php echo $row2['order_log_id']; ?>">
 </form >
 
 	 </div>
 	 <div class="modal-footer">
-			 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			  <button onclick="myFunction()" type="button" form="form1" value="Submit" style="float:left;" class="btn btn-secondary">Close</button>
+			 <button type="button" class="btn btn-fill btn-secondary" data-dismiss="modal">Close</button>
+			  <button onclick="myFunction()" type="button" form="form1" value="Submit" style="float:left; background-color: #00BFFF ; color: white; border: none;" class="btn btn-secondary">Tagged as Returned</button>
 	 </div>
 
 

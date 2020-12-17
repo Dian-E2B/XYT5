@@ -40,13 +40,27 @@ session_start();
   }
 ?>
 <head>
+
   <?php include 'z_otherUI/mainhead.php' ?>
+    <link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
 </head>
 <style>
 body:not(.modal-open){
   padding-right: 0px !important;s
 }
 </style>
+
+<script src="assets/js/jquery-3.5.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="verdor/jquery.dataTables.min.js"></script>
+<script>
+
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+
+</script>
+
 <body>
 
     <div class="wrapper">
@@ -197,23 +211,26 @@ body:not(.modal-open){
 </body>
 
 <!--   Core JS Files   -->
-<script src="assets/js/jquery-3.5.1.min.js" type="text/javascript">
+
 
 </script>
-<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
 <!--  Charts Plugin -->
-<script src="assets/js/chartist.min.js"></script>
+
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
+
+
 <!--  Google Maps Plugin    -->
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-<script src="assets/js/light-bootstrap-dashboard.js"></script>
+
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script>
 $(document).ready(function(){
   $(".dropdown-toggle").dropdown();
 
 });
+
 
 
 //REMOVE MODAL DATA AFTER CLOSED
