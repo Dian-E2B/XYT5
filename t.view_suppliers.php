@@ -45,14 +45,14 @@ $database='possys';
     <!-- Modal content-->
     <div class="modal-body">
 
-        <form id="add_prod_form" action="z_execute/update_supplier.php">
+        <form action="z_execute/update_supplier.php" >
             <fieldset id="homeFieldset" disabled>
 
                 <div class="row">
                     <div class="col-md-6">
                         <div style="margin-bottom: 5px; display: none;" class="form-group">
                             <label for="exampleInputEmail1">ID</label>
-                            <input style="border-radius: 15px;" name="thissid" class="form-control" value="<?php echo  $rowsupps['supplier_id'];    ?>">
+                            <input style="border-radius: 15px;" name="thissid" required class="form-control" value="<?php echo  $rowsupps['supplier_id'];    ?>">
                         </div>
                         <div style="margin-bottom: 5px;" class="form-group">
                             <label for="exampleInputEmail1">Name</label>
@@ -65,15 +65,15 @@ $database='possys';
                     <div class="col-md-4">
                         <div style="margin-bottom: 5px;" class="form-group">
                             <label>Email</label>
-                            <input style="border-radius: 15px;" class="form-control" name="thisemail"
+                            <input style="border-radius: 15px;" type="email" class="form-control" name="thisemail"
                                 placeholder="Created by ID" value="<?php echo  $rowsupps['email'];?>">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div style="margin-bottom: 5px;" class="form-group">
                             <label>Phone</label>
-                            <input style="border-radius: 15px;" class="form-control" name="thisphone"
-                                placeholder="Created by ID" value="<?php echo  $rowsupps['phone'];?>">
+                            <input id="phonenumber" style="border-radius: 15px;"   class="form-control" name="thisphone"
+                                placeholder="Created by ID" pattern="[0-9]{10}" title="Invalid format. eg. 9218321121" required value="<?php echo  $rowsupps['phone'];?>">
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -98,17 +98,18 @@ $database='possys';
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Address</label>
-                            <textarea pattern="[^()/><\][\\\x22,;|]+" rows="3" title="No special characters."
-                                class="form-control" name="thisaddress"><?php echo $rowsupps['address'] ?></textarea>
+                            <textarea    rows="3"
+                                class="form-control" name="thisaddress" pattern="[A-Za-z]+" title="No special characters." required><?php echo $rowsupps['address'] ?></textarea>
                         </div>
                     </div>
                 </div>
 
             </fieldset>
+            <button  type="submit" style="display:none;" id="btnupdate"
+                class="col-md-3 btn btn-success btn-fill pull-right">Update Supplier</button>
         </form>
 
-        <button form="add_prod_form" type="submit" style="display: none" id="btnupdate"
-            class="col-md-3 btn btn-success btn-fill pull-right">Update Supplier</button>
+
 
         <button id="editbtn1" onclick="EditButton()" class="col-md-3 btn btn-info btn-fill editbutton"><i
                 style="font-size:20px;" readonly id="editbtn" style="display: block" class="fas fa-edit"></i></button>
@@ -162,6 +163,8 @@ $(".editbutton").click(function() {
         //$("#btndelete").hide();
     }
 });
+
+
 </script>
 
 </html>

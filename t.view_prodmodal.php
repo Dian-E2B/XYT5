@@ -18,7 +18,7 @@ $database='possys';
             join tbl_status a on a.status_id=p.status_id
             join tbl_login o on o.user_id=p.addedby_id
             join tbl_pricing r on r.unit_id=p.price_type
-            where product_id='$var';";
+            where product_id='$var'";
 
 
 
@@ -30,7 +30,7 @@ $database='possys';
 
               }
 
-             $sqlshow_allsupplier2="select supplier_id,company_name from tbl_supplier;";
+             $sqlshow_allsupplier2="select supplier_id,company_name from tbl_supplier where status_id=1;";
              $resultsupps2 = $conn->query($sqlshow_allsupplier2);
 
              $sqlshow_allstatus2="select status_id,status_name from tbl_status;";

@@ -3,13 +3,14 @@
 <?php
 include 'z_execute/connection.php';
 session_start();
-$sqlshow_suppliers="Select supplier_id,company_name,email,phone,address,status_id from tbl_supplier;";
+$sqlshow_suppliers="Select supplier_id,company_name,email,phone,address,status_id from tbl_supplier order by status_id desc;";
 $result = $connection->query($sqlshow_suppliers);
 
 ?>
 
 <head>
     <?php include 'z_otherUI/mainhead.php' ?>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 <style>
 body:not(.modal-open){
@@ -58,7 +59,7 @@ body:not(.modal-open){
                                 </div>
 
                                 <div class="content table-responsive">
-                                    <table class=" table table-hover table-striped">
+                                    <table id="dataTable" class="table table-hover table-striped"  width="100%">
 
 
                                         <thead>
@@ -68,7 +69,7 @@ body:not(.modal-open){
                                             <th>phone</th>
                                             <th>address</th>
                                             <th>status</th>
-                                            <th>check</th>
+                                            <th>Action</th>
                                         </thead>
 
                                         <tbody>
@@ -140,18 +141,26 @@ body:not(.modal-open){
 </body>
 
 <!--   Core JS Files   -->
-<script src="assets/js/jquery-3.5.1.min.js" type="text/javascript">
-</script>
+<script src="assets/js/jquery-3.5.1.min.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 <!--  Charts Plugin -->
-<script src="assets/js/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
 <!--  Google Maps Plugin    -->
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="assets/js/light-bootstrap-dashboard.js"></script>
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-<script src="assets/js/demo.js"></script>
+
+   <!-- Page level plugins -->
+   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+   <!-- Page level custom scripts -->
+   <script src="js/demo/datatables-demo.js"></script>
+   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
 <script>
 $(document).ready(function(){
   $(".dropdown-toggle").dropdown();
@@ -159,6 +168,12 @@ $(document).ready(function(){
 $('#exampleModals').on('hide.bs.modal', function() {
     $('#exampleModals').removeData();
 })
+
+$('#dataTable').dataTable( {
+  "searching": false
+
+} );
+
 
 $('#exampleModals').on('show.bs.modal', function(event) {
 
