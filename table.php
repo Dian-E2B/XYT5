@@ -44,7 +44,7 @@ session_start();
 </head>
 <style>
 body:not(.modal-open){
-  padding-right: 0px !important;
+  padding-right: 0px !important;s
 }
 </style>
 <body>
