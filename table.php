@@ -104,21 +104,21 @@ body:not(.modal-open){
                                 </div>
 
                                 <div class="content table-responsive">
-                                    <table id="dataTable" class="table table-hover table-striped">
+                                    <table id="dataTable" class="table table-hover table-striped"  width="100%">
 
 
                                         <thead>
                                             <th style="display:block">ID</th>
                                             <th>Name</th>
-                                            <th>Description</th>
+                                            <th style="display:none;">Description</th>
                                             <th>Price</th>
                                             <th>Unit</th>
                                             <th>SKU</th>
                                             <th>Supplier</th>
-                                            <th>Status</th>
-                                            <th>Stocks</th>
+                                            <th style="text-align:center;">Status</th>
+                                            <th style="text-align:center;">Stocks</th>
                                             <th>Date Added</th>
-                                            <th>Check</th>
+                                            <th>Action</th>
                                         </thead>
                                         <tbody>
                                             <tr>
@@ -127,23 +127,19 @@ body:not(.modal-open){
 
 
 
-                                                 <td style="padding-right: 0px; word-wrap: break-word;">
-                                                    <?php echo $row['product_id']; ?></td>
-                                                <td style="padding-right: 0px; word-wrap: break-word;">
+                                                 <td ><?php echo $row['product_id']; ?></td>
+                                                <td style="word-wrap: break-word;">
                                                     <?php echo $row['name']; ?></td>
-                                                <td class="col-md-1"style="padding-right: 4px;  word-wrap: break-word;">
+                                                <td style="display:none;" class="col-md-1" style="word-wrap: break-word;">
                                                     <?php echo $row['description']; ?></td>
 
                                                 <td class="" style=" word-wrap: break-all;">
                                                     <?php echo $row['price']; ?></td>
                                                 <td style=" word-wrap: break-all;"><?php echo $row['unit_type']; ?></td>
                                                 <td style=" word-wrap: break-all;"><?php echo $row['sku']; ?></td>
-                                                <td class=""
-                                                    style="padding-left: 6px; padding-right: 0px; word-wrap: break-all;">
-                                                    <?php echo $row['company_name']; ?></td>
-                                                <td class="text-md-left" style=" word-wrap: break-all;">
-                                                    <?php echo $row['status_id']; ?></td>
-                                                <td  id="stocks_color" class="stocks_color text-md-left" style="word-wrap: break-all; color:<?= ($row['stocks'] <= 30 ? 'red' : 'black'); ?>">
+                                                <td class="" style=" word-wrap: break-word;"><?php echo $row['company_name']; ?></td>
+                                                <td class="" style="text-align:center;"><?php echo $row['status_id']; ?></td>
+                                                <td  id="stocks_color" class="stocks_color text-md-left" style="text-align:center; word-wrap: break-all; color:<?= ($row['stocks'] <= 30 ? 'red' : 'black'); ?>">
                                                     <?php echo $row['stocks']; ?></td>
 
                                                 <td><?php echo $row['date_added']; ?></td>

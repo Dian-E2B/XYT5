@@ -64,7 +64,7 @@ $database='possys';
                                     </div>
                                     <div style="margin-bottom: 5px;" class="form-group">
                                         <label for="exampleInputEmail1">Name</label>
-                                        <input style="border-radius: 15px;" name="thispname" type="text" pattern="[A-Za-z]+" title="Invalid Input. Must contain letters only" class="form-control" value="<?php echo  $row2['name'];    ?>">
+                                        <input style="border-radius: 15px;" name="thispname" type="text" pattern="[A-Za-z\s]+" title="Invalid Input. Must contain letters only" class="form-control" value="<?php echo  $row2['name'];    ?>">
                                     </div>
 
 
@@ -126,7 +126,7 @@ $database='possys';
                                 <div class="col-md-4">
                                     <div style="margin-bottom: 5px;" class="form-group">
                                         <label>Price Per Unit</label>
-                                        <input style="border-radius: 15px;"  type="text" pattern="[1-9]*[^()/><\][\\\x22,;|]+" title="Must be digits only." class="form-control" placeholder="City" name="thisprice" value="<?php echo $row2['price'] ?>">
+                                        <input style="border-radius: 15px;"  type="text" pattern="[1-9]*[^()/><\][\\\x22,;|]+" title="Must be digits only." class="form-control" placeholder="Price" name="thisprice" value="<?php echo $row2['price'] ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -147,7 +147,7 @@ $database='possys';
                                 <div class="col-md-4">
                                     <div style="margin-bottom: 5px;" class="form-group">
                                         <label>SKU</label>
-                                        <input style="border-radius: 15px;"  type="text" class="form-control" name="thissku" value="<?php echo $row2['sku'] ?>">
+                                        <input style="border-radius: 15px;"  type="text" class="form-control" required name="thissku" value="<?php echo $row2['sku'] ?>">
                                     </div>
                                 </div>
                             </div>
