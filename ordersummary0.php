@@ -80,8 +80,8 @@ else{
 
 	 </div>
 	 <div class="modal-footer">
-			 <button type="button" class="btn btn-fill btn-secondary" data-dismiss="modal">Close</button>
-			  <button onclick="myFunction()" type="button" form="form1" value="Submit" style="float:left; background-color: #00BFFF ; color: white; border: none;" class="btn btn-secondary">Tagged as Returned</button>
+			 <button style="border:none;" type="button" class="btn btn-fill btn-secondary" data-dismiss="modal">Close</button>
+			  <button onclick="myFunction()" type="button" form="form1" value="Submit" style="float:left; background-color: #FF4500 ; color: white; border: none;" class="btn btn-secondary">Tagged as Returned</button>
 	 </div>
 
 
