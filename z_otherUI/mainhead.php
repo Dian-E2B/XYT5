@@ -26,7 +26,7 @@
   <!--     Fonts and icons     -->
 
   <link href="fontawesome0/css/all.min.css" rel="stylesheet">
-  <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+  <!-- <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" /> -->
 
 
 </head>

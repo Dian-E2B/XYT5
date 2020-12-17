@@ -40,27 +40,15 @@ session_start();
   }
 ?>
 <head>
-
   <?php include 'z_otherUI/mainhead.php' ?>
-    <link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 <style>
 body:not(.modal-open){
-  padding-right: 0px !important;s
+  padding-right: 0px !important;
 }
 </style>
-
-<script src="assets/js/jquery-3.5.1.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="verdor/jquery.dataTables.min.js"></script>
-<script>
-
-$(document).ready( function () {
-    $('#myTable').DataTable();
-} );
-
-</script>
-
 <body>
 
     <div class="wrapper">
@@ -116,7 +104,7 @@ $(document).ready( function () {
                                 </div>
 
                                 <div class="content table-responsive">
-                                    <table id="mytable" class="table table-hover table-striped">
+                                    <table id="dataTable" class="table table-hover table-striped">
 
 
                                         <thead>
@@ -180,7 +168,7 @@ $(document).ready( function () {
 
                                 </div>
                                 <!-- Modal content-->
-                                <div id="exampleModals" class="modal" >
+                                <div id="exampleModals" class="modal fade" data-backdrop="true">
                                     <div class="modal-dialog">
 
                                         <!-- Modal content-->
@@ -213,31 +201,42 @@ $(document).ready( function () {
 <!--   Core JS Files   -->
 
 
-</script>
-
+<script src="assets/js/jquery-3.5.1.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 <!--  Charts Plugin -->
-
 <!--  Notifications Plugin    -->
 <script src="assets/js/bootstrap-notify.js"></script>
-
-
 <!--  Google Maps Plugin    -->
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-
+<script src="assets/js/light-bootstrap-dashboard.js"></script>
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+
+   <!-- Page level plugins -->
+   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+   <!-- Page level custom scripts -->
+   <script src="js/demo/datatables-demo.js"></script>
+   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
 <script>
+
+$('#dataTable').dataTable( {
+  "searching": false
+
+} );
+
+
 $(document).ready(function(){
   $(".dropdown-toggle").dropdown();
-
 });
 
-
-
-//REMOVE MODAL DATA AFTER CLOSED
-
-
+$('#exampleModals').on('hide.bs.modal', function() {
+    $('#exampleModals').removeData();
+})
 $('#exampleModals').on('show.bs.modal', function(event) {
-
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = button.data('id') // Extract info from data-* attributes
     var modal = $(this);
@@ -248,22 +247,15 @@ $('#exampleModals').on('show.bs.modal', function(event) {
         url: "t.view_prodmodal.php",
         data: dataString,
         cache: false,
-
         success: function(data) {
-            //console.log(data);
+            console.log(data);
             modal.find('.dash').html(data);
         },
         error: function(err) {
-            //console.log(err);
+            console.log(err);
         }
     });
-});
-
-$('#exampleModals').on('hide.bs.modal', function() {
-  $(this).find('form').trigger('reset');
-    $('#exampleModals').removeData();
-
-});
+})
 
 function success() {
   $.notify({
@@ -292,12 +284,6 @@ function successadded() {
   });
 }
 
-var input = document.getElementById("myInput");
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("myBtn").click();
-  }
-});
+
 </script>
 </html>

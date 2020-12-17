@@ -20,82 +20,59 @@ $resultsups = $connection->query($sqlshow_allsuppliers);
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>XYT</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-    <!-- Bootstrap core CSS     -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Animation library for notifications   -->
-    <link href="assets/css/animate.min.css" rel="stylesheet" />
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
-    <!--     Fonts and icons     -->
-    <link href="fontawesome/css/all.css" rel="stylesheet">
-    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <?php include 'z_otherUI/mainhead.php' ?>
 </head>
 
 <body>
     <div class="wrapper">
         <!-- Start of sidebar -->
         <div class="sidebar" data-color="blue">
-            <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
-            <div class="sidebar-wrapper">
+
+        <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+
+
+        <div class="sidebar-wrapper">
             <div class="logo">
                 <a class="simple-text">
-                  <?php echo $_SESSION['username'];  ?>
+                    <?php echo $_SESSION['username'];  ?>
                 </a>
             </div>
 
-                <ul class="nav">
-                    <li>
-                        <a href="dashboard.html">
-                            <i class="pe-7s-graph"></i>
-                            <p>temp</p>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="user.html">
-                            <i class="pe-7s-user"></i>
-                            <p>temp</p>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="table.php">
-                            <i class="pe-7s-note2"></i>
-                            <p>Product List</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="Supplier_table.php">
-                            <i class="pe-7s-news-paper"></i>
-                            <p>Suppliers</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons.html">
-                            <i class="pe-7s-science"></i>
-                            <p>temp</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="maps.html">
-                            <i class="pe-7s-map-marker"></i>
-                            <p>temp</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="notifications.html">
-                            <i class="pe-7s-bell"></i>
-                            <p>temp</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="nav">
+                <li>
+                    <a href="reports.php">
+                      <i class="fas fa-chart-pie"></i>
+                        <p>Reports</p>
+                    </a>
+                </li>
+                <li class="active">
+
+                    <a href="table.php">
+                        <i class="fad fa-clipboard"></i>
+                        <p>Product Lists</p>
+
+                    </a>
+
+                <li>
+                    <a href="supplier_table.php">
+                        <i class="fad fa-dolly"></i>
+                        <p>Suppliers</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="icons.php">
+                        <i class="fal fa-money-check-edit-alt"></i>
+                        <p>Sales</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="ordersummary.php">
+                        <i class="fal fa-truck"></i>
+                        <p>Orders</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
         </div>
         <!-- End of sidebar -->
 

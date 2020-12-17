@@ -22,7 +22,7 @@ $result_saletbl = $connection->query($fetch_saletbl);
 <body>
 
   <div class="wrapper">
-    <?php include 'z_otherUI/sidebartables.php' ?>
+    <?php include 'z_otherUI/sidebar_reports.php' ?>
 
     <div class="main-panel">
       <?php include 'z_otherUI/navbar.php' ?>
