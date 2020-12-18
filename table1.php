@@ -27,7 +27,7 @@ session_start();
       $sqlshow_productstable="SELECT p.product_id,p.name,p.description,p.price,p.sku,s.company_name,p.status_id,stocks,date_added,u.unit_type
       from tbl_product p
       join tbl_supplier s using(supplier_id)
-      join tbl_pricing u on u.unit_id=p.price_type where p.status_id='1'";
+      join tbl_pricing u on u.unit_id=p.price_type where p.status_id='0'";
 
         //LOAD ALL DATA
         if($result = $connection->query($sqlshow_productstable)) {
