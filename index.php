@@ -10,7 +10,7 @@ session_start();
 
   <?php
   include 'z_otherUI/secondhead.php';
-  
+
   ?>
 
 </head>

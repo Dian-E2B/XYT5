@@ -32,9 +32,18 @@ $sql= "UPDATE tbl_supplier
 
 
 if ($result = $connection->query($sql)) {
-  $_SESSION['success_message']="Supplier Successfully added";
-  header("Location:../supplier_table.php");
-  exit();
+
+    $sql2="INSERT into tbl_records(actions,date,user_id) values('Number $getsupid Supplier has been updated','$date_today','1')";
+     if (!mysqli_query($connection, $sql2)) {
+       echo "Error: 2" . $sql2 . "<br>" . mysqli_error($connection);
+     }else {
+       $_SESSION['success_message']="Supplier Successfully added";
+       header("Location:../supplier_table.php");
+       exit();
+     }
+
+
+
 }
 else{
     echo "Error:1 " . $sql . "<br>" . $connection->error;

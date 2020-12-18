@@ -45,6 +45,12 @@
                 <p>Orders</p>
             </a>
         </li>
+        <li>
+            <a href="Records.php">
+              <i class="fad fa-cabinet-filing"></i></i>
+                <p>Records</p>
+            </a>
+        </li>
     </ul>
 </div>
 </div>

@@ -1,5 +1,9 @@
 <?php
 include 'connection.php';
+date_default_timezone_set("Singapore");
+$date_today=date('Y-m-d');
+$date_today1=date('Y-m-d');
+
 
 //FIXED ALL!
 $getproductid=$_GET['thispid'];
@@ -40,10 +44,26 @@ $sql= "UPDATE tbl_product
 
 
 if ($result = $connection->query($sql)) {
-  session_start();
-  $_SESSION['success_message']=".";
-  header("Location:../table.php");
-  exit();
+
+  $sqlr="SELECT *FROM TBL_LOGIN WHERE username='$getadmin';";
+  $resultr = mysqli_query($connection, $sqlr);
+  if (!$resultr) {
+    echo "Error: 2" . $sqlr . "<br>" . mysqli_error($connection);
+  }else {
+        $row = mysqli_fetch_assoc($resultr);
+        $val_adminid=$row['User_ID'];
+        $sql2="INSERT into tbl_records(actions,date,user_id) values('Number $getproductid Product has been updated','$date_today1','$val_adminid')";
+    	if (!mysqli_query($connection, $sql2)) {
+    		echo "Error: 2" . $sql2 . "<br>" . mysqli_error($connection);
+    	}else {
+        session_start();
+        $_SESSION['success_message']=".";
+        header("Location:../table.php");
+        exit();
+    	}
+  }
+
+
 }
 else{
     echo "Error:1 " . $sql . "<br>" . $connection->error;
