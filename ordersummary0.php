@@ -101,8 +101,9 @@ else{
 	  }
 
 	}
-
-
+	$('#exampleModals').on('hide.bs.modal', function() {
+	    $('#exampleModals').removeData();
+	})
 
 	</script>
 

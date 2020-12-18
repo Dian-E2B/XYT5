@@ -3,7 +3,7 @@
 <?php
 include 'z_execute/connection.php';
 session_start();
-$sqlshow_suppliers="SELECT supplier_id,company_name,email,phone,address,status_id from tbl_supplier where status_id='1' order by status_id desc ;";
+$sqlshow_suppliers="SELECT supplier_id,company_name,email,phone,address,status_id from tbl_supplier where status_id='0' order by status_id desc ;";
 $result = $connection->query($sqlshow_suppliers);
 
 ?>
@@ -23,7 +23,76 @@ body:not(.modal-open){
 
 
         <div class="main-panel">
-            <?php include 'z_otherUI/supplierformnavbar.php' ?>
+          <nav class="navbar navbar-default navbar-fixed">
+                          <div class="container-fluid">
+                              <div class="navbar-header">
+                                  <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                      data-target="#navigation-example-2">
+                                      <span class="sr-only">Toggle navigation</span>
+                                      <span class="icon-bar"></span>
+                                      <span class="icon-bar"></span>
+                                      <span class="icon-bar"></span>
+                                  </button>
+                                  <a href="supplier_table.php"  class="navbar-brand" ><i  style="font-size:3rem; margin-top:-5px; color: blue;" class="fas fa-caret-square-left"></i></a>
+                              </div>
+                              <div class="collapse navbar-collapse">
+                                  <ul class="nav navbar-nav navbar-left">
+                                      <li>
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                              <i class="fa fa-dashboard"></i>
+                                              <p class="hidden-lg hidden-md">Dashboard</p>
+                                          </a>
+                                      </li>
+                                      <li class="dropdown">
+
+                                          <ul class="dropdown-menu">
+                                              <li><a href="#">Notification 1</a></li>
+                                              <li><a href="#">Notification 2</a></li>
+                                              <li><a href="#">Notification 3</a></li>
+                                              <li><a href="#">Notification 4</a></li>
+                                              <li><a href="#">Another notification</a></li>
+                                          </ul>
+                                      </li>
+
+          <!-- SEARCH INPUT -->
+                                      <!-- <li>
+                                          <form id="searchform" method="POST" action="suppliersearch.php" >
+                                            <input  id="myInput" name="thissearch" style="margin-top:10px;" class="form-control result" placeholder="Search supplier">
+                                          </form>
+                                      </li>
+
+                                      <li>
+
+                                          <i style="border:0px;  font-size: 20px; padding:20px;" class="fa fa-search" aria-hidden="true" ></i>
+
+                                      </li> -->
+
+                                  </ul>
+
+                                  <ul class="nav navbar-nav navbar-right">
+
+                                      <li class="dropdown  ">
+                                          <a href="#" class="dropdown-toggle"  data-toggle="dropdown" >
+                                              <p>
+                                              <i class="fas fa-bars"></i>
+                                                      &nbsp;
+                                              </p>
+                                          </a>
+                                          <ul class="dropdown-menu">
+                                              <li><a href="./add_productform.php"><i style="font-size:16px;"class="fas fa-cubes"></i>&nbsp;Add Product</a></li>
+                                              <li><a href="./add_supplierform.php"><i class="fas fa-parachute-box"></i>&nbsp;Add Supplier</a></li>
+                                              <li ><a href="./supplier_table0.php" ><i style="font-size:16px;" class="fad fa-window-close"></i>&nbsp;Inactive Suppliers</a></a></li>
+                                              <li><a href="#">Temp</a></li>
+                                              <li><a href="#">Temp</a></li>
+                                              <li class="divider"></li>
+                                              <li><a href="#">Temp</a></li>
+                                          </ul>
+                                      </li>
+
+                                  </ul>
+                              </div>
+                          </div>
+                      </nav>
 
             <div class="content">
                 <div class="container-fluid">
