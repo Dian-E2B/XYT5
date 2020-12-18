@@ -3,7 +3,7 @@
 session_start();
 include 'z_execute/connection.php';
 //LOAD DATA
-$sql1="SELECT order_log_id,c.name,p.payment_type,r.type_name,date from tbl_orderdetails
+$sql1="SELECT order_log_id,c.name,p.payment_type,r.type_name,date,status from tbl_orderdetails
 join tbl_customer c using(customer_id)
 join tbl_customertype r using(customertype_id)
 JOIN tbl_payment p using(payment_id) ORDER BY order_log_id DESC";
@@ -15,7 +15,7 @@ $results1 = mysqli_query($connection, $sql1);
 <head>
 	<?php include 'z_otherUI/mainhead.php'; ?>
 	<?php include 'z_otherUI/ordersummarymodalstyle.php'; ?>
-
+<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -33,15 +33,15 @@ $results1 = mysqli_query($connection, $sql1);
 			                            <span class="icon-bar"></span>
 			                            <span class="icon-bar"></span>
 			                        </button>
-			                        <a class="navbar-brand" >Product Lists</a>
+			                        <a class="navbar-brand" ></a>
 			                    </div>
 			                    <div class="collapse navbar-collapse">
 			                        <ul class="nav navbar-nav navbar-left">
 
 
-
-			                            <li>
-			                                <form id="searchform" method="POST" action="tablesearch.php" >  <!-- SEARCH INPUT -->
+<!-- SEARCH INPUT -->
+			                            <!-- <li>
+			                                <form id="searchform" method="POST" action="tablesearch.php" >
 			                                  <input  id="myInput" name="thissearch" style="margin-top:10px;" class="form-control result" placeholder="Search Items">
 			                                </form>
 			                            </li>
@@ -50,7 +50,7 @@ $results1 = mysqli_query($connection, $sql1);
 
 			                                <i style="border:0px;  font-size: 20px; padding:20px;" class="fa fa-search" aria-hidden="true" ></i>
 
-			                            </li>
+			                            </li> -->
 
 			                        </ul>
 
@@ -65,7 +65,7 @@ $results1 = mysqli_query($connection, $sql1);
 			                                </a>
 			                                <ul class="dropdown-menu">
 			                                    <li><a href="./add_productform.php"><img src="img/package.svg" alt="Kiwi standing on oval" style="height: 3rem; width:3rem;"> Returned Products </li>
-			                                 
+
 
 			                                    <li class="divider"></li>
 			                                    <li><a href="#">Temp</a></li>
@@ -115,7 +115,7 @@ $results1 = mysqli_query($connection, $sql1);
                             <div class="content">
                                 <form>
 																	  <div class="content table-responsive">
-																	<table class="table table-striped">
+																	<table id="dataTable" class="table table-striped">
 																			<thead>
 																				<tr>
 																					<th>Order Log</th>
@@ -123,6 +123,7 @@ $results1 = mysqli_query($connection, $sql1);
 																					<th>Payment</th>
 																					<th>Discounts</th>
 																					<th>Date</th>
+																					<th>Status</th>
 																					<th>Action</th>
 																				</tr>
 																			</thead>
@@ -140,6 +141,7 @@ $results1 = mysqli_query($connection, $sql1);
 																					<td><?php echo $row1['payment_type']; ?></td>
 																					<td><?php echo $row1['type_name']; ?></td>
 																					<td><?php echo $row1['date'] ?></td>
+																					<td><?php echo $row1['status'] ?></td>
 																					<td><a type="button" style=" padding:5px 15px 5px 15px;"class="btn btn-info btn-fill" data-toggle="modal" data-id=<?php echo $row1['order_log_id']; ?> data-target="#exampleModals"><i style="font-size:20px;" class="fad fa-eye"></i></a></td>
 																			</tr>
 																			<?php
@@ -211,6 +213,15 @@ $results1 = mysqli_query($connection, $sql1);
 <script src="assets/js/light-bootstrap-dashboard.js"></script>
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="assets/js/demo.js"></script>
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
 <script>
 $('#exampleModals').on('hide.bs.modal', function() {
     $('#exampleModals').removeData();

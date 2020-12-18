@@ -44,6 +44,9 @@ if (isset($_POST['paymentradio'])){
                       echo "Error: 2" . $sqlclear . "<br>" . mysqli_error($connection);
                     }else {
                        header("Location:./ordersummary.php");
+
+
+
                     }
 
                 }
@@ -78,6 +81,7 @@ if (isset($_POST['paymentradio'])){
                           echo "Error: 5" . $sqlclear . "<br>" . mysqli_error($connection);
                         }else{
                              header("Location:./ordersummary.php");
+                             
                         }
 
                     }

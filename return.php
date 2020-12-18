@@ -49,7 +49,15 @@ if ($VARPASS==$X) {
         echo "Error: " . $SQL3 . "<br>" . mysqli_error($connection);
       }
       else {
-        header("Location:./ordersummary.php");
+          $SQL4 ="UPDATE tbl_orderdetails SET STATUS='Returned' where order_log_id='$var_orderlogid2'";
+          if (!mysqli_query($connection, $SQL4)) {
+            echo "Error: " . $SQL4 . "<br>" . mysqli_error($connection);
+          }
+          else {
+              header("Location:./ordersummary.php");
+          }
+
+
       }
     }
   } else {
@@ -161,7 +169,7 @@ if ($VARPASS==$X) {
 
                      <!--INPUT for val -->
 
-                     <input name="thislogid" value="<?php echo $var_orderlogid ?>">
+                     <input style="display:none;" name="thislogid" value="<?php echo $var_orderlogid ?>">
 
 
                      <div class="form-group justify-content-center">
