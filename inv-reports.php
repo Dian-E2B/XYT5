@@ -37,7 +37,54 @@ $result_prodtbl = $connection->query($fetch_prodtbl);
   <?php include 'z_otherUI/sidebar_reports.php' ?>
 
     <div class="main-panel">
-          <?php include 'z_otherUI/navbar_reports-plain.php' ?>
+
+      <nav class="navbar navbar-default navbar-fixed">
+                      <div class="container-fluid">
+
+
+      <!-- responsive -->
+
+                          <div class="navbar-header">
+                              <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                  data-target="#navigation-example-2">
+                                  <span class="sr-only">Toggle navigation</span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                              </button>
+                              <a href="reports.php"  class="navbar-brand" ><i  style="font-size:3rem; margin-top:-5px; color: blue;" class="fas fa-caret-square-left"></i></a>
+                          </div>
+
+      <!-- responsive -->
+                          <div class="collapse navbar-collapse">
+                              <ul class="nav navbar-nav navbar-left">
+                                  <li>
+                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                          <i class="fa fa-dashboard"></i>
+                                          <p class="hidden-lg hidden-md">Dashboard</p>
+                                      </a>
+                                  </li>
+                                  <li class="dropdown">
+
+                                      <ul class="dropdown-menu">
+                                          <li><a href="#">Notification 1</a></li>
+                                          <li><a href="#">Notification 2</a></li>
+                                          <li><a href="#">Notification 3</a></li>
+                                          <li><a href="#">Notification 4</a></li>
+                                          <li><a href="#">Another notification</a></li>
+                                      </ul>
+                                  </li>
+                              </ul>
+
+                              <ul class="nav navbar-nav navbar-right">
+
+
+                              </ul>
+                          </div>
+      <!-- responsive -->
+
+                      </div>
+                  </nav>
 
       <div class="content">
         <div class="container-fluid">

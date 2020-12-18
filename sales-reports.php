@@ -13,6 +13,11 @@ $result_pymnt = $connection->query($fetch_pymnt);
 $fetch_saletbl="SELECT * FROM saleable";
 $result_saletbl = $connection->query($fetch_saletbl);
 
+$fetch_saletbl2="SELECT sum(total) as totalsales FROM saleable";
+$result_saletbl02= $connection->query($fetch_saletbl2); //GET TOTAL
+$result_saletbl002=mysqli_fetch_assoc($result_saletbl02);
+$total=$result_saletbl002['totalsales'];
+
 ?>
 
 <head>
@@ -25,7 +30,7 @@ $result_saletbl = $connection->query($fetch_saletbl);
     <?php include 'z_otherUI/sidebar_reports.php' ?>
 
     <div class="main-panel">
-      <?php include 'z_otherUI/navbar.php' ?>
+      <?php include 'z_otherUI/navbar_reports-plain.php' ?>
 
       <div class="content">
         <div class="container-fluid">
@@ -107,6 +112,7 @@ $result_saletbl = $connection->query($fetch_saletbl);
                     <div class="row">
                       <table class="table table-hover table-striped">
                         <thead>
+                          <th></th>
                           <th>Order #</th>
                           <th>Product</th>
                           <th>SKU</th>
@@ -115,11 +121,14 @@ $result_saletbl = $connection->query($fetch_saletbl);
                           <th>Total Price</th>
                           <th>Payment Type</th>
                           <th>Date</th>
+
                         </thead>
 
                         <tbody>
                           <tr>
+
                             <?php while($row=mysqli_fetch_assoc($result_saletbl)) { ?>
+
                             <td><?php echo $row['order_log_id']; ?></td>
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['SKU']; ?></td>
@@ -128,9 +137,15 @@ $result_saletbl = $connection->query($fetch_saletbl);
                             <td><?php echo $row['total']; ?></td>
                             <td><?php echo $row['payment_type']; ?></td>
                             <td><?php echo $row['date']; ?></td>
+
                           </tr>
+                          <?php } ?>
+                            <tr>
+                              <td><b>Total Sales</b></td>
+                                <td><b><?php echo $total ?></b></td>
+                                </tr>
                         </tbody>
-                        <?php } ?>
+
                       </table>
                     </div>
                   </div> <!-- table -->

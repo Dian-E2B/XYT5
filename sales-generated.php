@@ -58,24 +58,16 @@ $sql= "SELECT ord.order_log_id, p.name, p.SKU, ol.qty,
             WHERE pay.payment_type = 'cheque'
             AND ord.date > CURRENT_DATE - 4
           ";
+
+
+          $fetch_saletbl2="SELECT sum(total) as totalsales FROM saleable";
+          $result_saletbl02= $connection->query($fetch_saletbl2); //GET TOTAL
+          $result_saletbl002=mysqli_fetch_assoc($result_saletbl02);
+          $total=$result_saletbl002['totalsales'];
 ?>
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-    <title>XYT - Sales Reports</title>
-
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-
-
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/css/animate.min.css" rel="stylesheet" />
-    <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet" />
-    <link href="fontawesome/css/all.css" rel="stylesheet">
-    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <?php include 'z_otherUI/mainhead.php' ?>
 
 </head>
 
@@ -85,7 +77,54 @@ $sql= "SELECT ord.order_log_id, p.name, p.SKU, ol.qty,
     <?php include 'z_otherUI/sidebartables.php' ?>
 
     <div class="main-panel">
-      <?php include 'z_otherUI/navbar.php' ?>
+      <nav class="navbar navbar-default navbar-fixed">
+                      <div class="container-fluid">
+
+
+      <!-- responsive -->
+
+                          <div class="navbar-header">
+                              <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                  data-target="#navigation-example-2">
+                                  <span class="sr-only">Toggle navigation</span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                              </button>
+                              <a href="reports.php"  class="navbar-brand" ><i  style="font-size:3rem; margin-top:-5px; color: blue;" class="fas fa-caret-square-left"></i></a>
+                          </div>
+
+      <!-- responsive -->
+                          <div class="collapse navbar-collapse">
+                              <ul class="nav navbar-nav navbar-left">
+                                  <li>
+                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                          <i class="fa fa-dashboard"></i>
+                                          <p class="hidden-lg hidden-md">Dashboard</p>
+                                      </a>
+                                  </li>
+                                  <li class="dropdown">
+
+                                      <ul class="dropdown-menu">
+                                          <li><a href="#">Notification 1</a></li>
+                                          <li><a href="#">Notification 2</a></li>
+                                          <li><a href="#">Notification 3</a></li>
+                                          <li><a href="#">Notification 4</a></li>
+                                          <li><a href="#">Another notification</a></li>
+                                      </ul>
+                                  </li>
+                              </ul>
+
+                              <ul class="nav navbar-nav navbar-right">
+
+
+                              </ul>
+                          </div>
+      <!-- responsive -->
+
+                      </div>
+                  </nav>
+
 
       <div class="content">
         <div class="container-fluid">
@@ -189,6 +228,7 @@ $sql= "SELECT ord.order_log_id, p.name, p.SKU, ol.qty,
                   <div class="content table-responsive">
                     <div class="row">
                       <table class="table table-hover table-striped" id="tblSales">
+
                         <thead>
                           <th>Order #</th>
                           <th>Product</th>
@@ -229,7 +269,10 @@ $sql= "SELECT ord.order_log_id, p.name, p.SKU, ol.qty,
                                   <td colspan="8" align="center">No data found.</td>
                                 </tr>
                             <?php } ?>
-
+                            <tr>
+                              <td><b>Total Sales</b></td>
+                                <td><b>₱ <?php echo $total ?>  </b></td>
+                                </tr>
 
                         </tbody>
                       </table>

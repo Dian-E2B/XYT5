@@ -54,7 +54,7 @@ $results1 = mysqli_query($connection, $sql1);
 
 			                        </ul>
 
-			                        <ul class="nav navbar-nav navbar-right">
+			                        <!-- <ul class="nav navbar-nav navbar-right">
 
 			                            <li class="dropdown  ">
 			                                <a href="#" class="dropdown-toggle"  data-toggle="dropdown" >
@@ -72,7 +72,7 @@ $results1 = mysqli_query($connection, $sql1);
 			                                </ul>
 			                            </li>
 
-			                        </ul>
+			                        </ul> -->
 			                    </div>
 			                </div>
 			            </nav>
