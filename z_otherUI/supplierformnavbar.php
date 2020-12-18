@@ -34,8 +34,9 @@
                                 </ul>
                             </li>
 
-                            <li>
-                                <form id="searchform" method="POST" action="suppliersearch.php" >  <!-- SEARCH INPUT -->
+<!-- SEARCH INPUT -->
+                            <!-- <li>
+                                <form id="searchform" method="POST" action="suppliersearch.php" >
                                   <input  id="myInput" name="thissearch" style="margin-top:10px;" class="form-control result" placeholder="Search supplier">
                                 </form>
                             </li>
@@ -44,7 +45,7 @@
 
                                 <i style="border:0px;  font-size: 20px; padding:20px;" class="fa fa-search" aria-hidden="true" ></i>
 
-                            </li>
+                            </li> -->
 
                         </ul>
 
