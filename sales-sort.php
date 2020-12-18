@@ -54,67 +54,39 @@ $sql= "SELECT name, SKU, SUM(qty) AS qty, price, total
           ORDER BY qty $str_sale";
 $saleable = $connection->query($sql);
 
+
+
+$result1 = $connection->query($sql);
+$total_row1 = $result1->num_rows;
+
+if($total_row1 > 0) {
+  foreach($result1 as $row1) {
+
+      if (isset($row2)) {
+        $row2=$row2+$row1['total'];
+      }
+      else
+      {
+      $row2=$row1['total'];
+      }
+
+
+}}
+
 ?>
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-    <title>XYT - Sales Reports</title>
-
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-
-
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/css/animate.min.css" rel="stylesheet" />
-    <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet" />
-    <link href="fontawesome/css/all.css" rel="stylesheet">
-    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+  <?php include 'z_otherUI/mainhead.php' ?>
 
 </head>
 
 <body>
 
   <div class="wrapper">
-    <div class="sidebar" data-color="blue">
-      <div class="sidebar-wrapper">
-        <div class="logo">
-          <a class="simple-text"><?php echo $_SESSION['username'];  ?></a>
-        </div>
-
-         <ul class="nav"> <!--sidebar nav -->
-            <li class="active">
-              <a href="reports.php">
-                <i class="pe-7s-graph"></i><p>REPORTS</p>
-              </a>
-            </li>
-
-            <li>
-              <a href="table.php">
-                  <i class="pe-7s-note2"></i><p>Product Lists</p>
-              </a>
-            </li>
-
-            <li>
-              <a href="supplier_table.php">
-                  <i class="pe-7s-news-paper"></i><p>Suppliers</p>
-              </a>
-            </li>
-
-            <li>
-              <a href="icons.php">
-                  <i class="pe-7s-cash"></i><p>Sales</p>
-              </a>
-            </li>
-        </ul>
-
-      </div> <!--sidebar wrapper -->
-    </div> <!--sidebar -->
+  <?php include 'z_otherUI/sidebar_reports.php' ?>
 
     <div class="main-panel">
-      <?php include 'z_otherUI/navbar.php' ?>
+      <?php include 'z_otherUI/navbar_reports-plain.php' ?>
 
       <div class="content">
         <div class="container-fluid">
@@ -160,8 +132,23 @@ $saleable = $connection->query($sql);
                   <!-- table -->
                   <div class="content table-responsive">
                     <div class="row">
+
                       <table class="table table-hover table-striped" id="tblInventory">
+
                         <thead>
+                          
+                          <tr style="color:blue;">
+                            <td><b>Totalsales</b></td>
+                            <td ><b><?php if(isset($row2)){
+                                echo $row2;
+                            }
+                            else {
+                                echo "0";
+                            }
+
+
+                             ?></b></td>
+                          </tr>
                           <th>Product</th>
                           <th>SKU</th>
                           <th>Quantity</th>
@@ -198,6 +185,7 @@ $saleable = $connection->query($sql);
 
 
                         </tbody>
+
                       </table>
                     </div>
                   </div> <!-- table -->

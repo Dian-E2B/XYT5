@@ -10,7 +10,7 @@ session_start();
 <?php include 'z_otherUI/mainhead.php' ?>
 <style>
 .button3 {
-  background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC  51%, #02AAB0  100%) !important;
+  background-image: linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%) !important;
   margin: 10px;
            padding: 15px 45px !important;
            text-align: center !important;
@@ -29,7 +29,7 @@ session_start();
           }
 
 .button4 {
-  background-image: linear-gradient(to right, #1A2980 0%, #26D0CE  51%, #1A2980  100%) !important;
+  background-image: linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%) !important;
   margin: 10px;
            padding: 15px 45px !important;
            text-align: center !important;

@@ -70,10 +70,10 @@ $sql= "SELECT p.product_id, p.name, p.description, p.stocks, p.price, u.unit_typ
 <body>
 
   <div class="wrapper">
-    <?php include 'z_otherUI/sidebarreports.php' ?>
+    <?php include 'z_otherUI/sidebar_reports.php' ?>
 
     <div class="main-panel">
-      <?php include 'z_otherUI/navbar.php' ?>
+      <?php include 'z_otherUI/navbar_reports-plain.php' ?>
 
       <div class="content">
         <div class="container-fluid">

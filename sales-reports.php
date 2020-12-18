@@ -112,7 +112,7 @@ $total=$result_saletbl002['totalsales'];
                     <div class="row">
                       <table class="table table-hover table-striped">
                         <thead>
-                          <th></th>
+
                           <th>Order #</th>
                           <th>Product</th>
                           <th>SKU</th>
@@ -140,10 +140,7 @@ $total=$result_saletbl002['totalsales'];
 
                           </tr>
                           <?php } ?>
-                            <tr>
-                              <td><b>Total Sales</b></td>
-                                <td><b><?php echo $total ?></b></td>
-                                </tr>
+
                         </tbody>
 
                       </table>
