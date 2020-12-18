@@ -73,9 +73,10 @@ body:not(.modal-open){
                                         </thead>
 
                                         <tbody>
+                                          <?php  while($row = $result->fetch_assoc()) {
+                                      ?>
                                             <tr>
-                                                <?php  while($row = $result->fetch_assoc()) {
-                                            ?>
+
                                                  <td style="padding-right: 4px; word-wrap: break-word;">
                                                     <?php echo $row['supplier_id']; ?></td>
                                                 <td style="padding-right: 0px; word-wrap: break-word;">
@@ -99,12 +100,13 @@ body:not(.modal-open){
                                                         data-target="#exampleModals"><i class="far fa-eye"></i></button>
                                                 </td>
                                             </tr>
+                                            <?php
+
+                                                }
+                                            ?>
                                         </tbody>
 
-                                        <?php
 
-                                            }
-                                        ?>
                                     </table>
 
                                 </div>
@@ -170,7 +172,7 @@ $('#exampleModals').on('hide.bs.modal', function() {
 })
 
 $('#dataTable').dataTable( {
-  "searching": false
+  //"searching": false
 
 } );
 

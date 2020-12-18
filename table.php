@@ -222,7 +222,7 @@ body:not(.modal-open){
 <script>
 
 $('#dataTable').dataTable( {
-  "searching": false
+//  "searching": false
 
 } );
 
