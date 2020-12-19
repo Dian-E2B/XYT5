@@ -21,12 +21,12 @@ $confirm_result=mysqli_fetch_assoc($result);
 if($confirm_result){
 
 	$getusername=$confirm_result['Username'];
-	session_start();
+	
 
 	$_SESSION['username']=$getusername;
 	$_SESSION['user_id']=$getuserid;
 
-	$sql2="INSERT into tbl_records(actions,date,user_id) values('$getusername Logged in','$date_today',$getuserid)";
+	$sql2="INSERT into tbl_records(actions,date,user_id) values('$getusername Logged in','$date_today','1')";
 	if (!mysqli_query($connection, $sql2)) {
 		echo "Error: 2" . $sql2 . "<br>" . mysqli_error($connection);
 	}else {

@@ -20,11 +20,22 @@ if ($result_test = $connection->query($sql)) {
     $sql2="Update tbl_cart set
     subtotal=$var_subtotal
     where product_id='$var_id'";
-      if (mysqli_query($connection, $sql2)) { // EXECUTE UPDATE
-        header("Location:./yourcart.php");
-      } else {
-        echo "Error: " . $sql2 . "<br>" . mysqli_error($connection);
-      }
+      
+                  if (mysqli_query($connection, $sql2)) { // EXECUTE UPDATE
+                    
+                   
+                    $sql3="UPDATE tbl_product set stocks=stocks+1 where product_id='$var_id'";
+
+                    if (!mysqli_query($connection, $sql3)) {
+                       echo "Error: " . $sql3 . "<br>" . mysqli_error($connection);
+                    }
+                    else{
+                      header("Location:./yourcart.php");
+                    }
+
+                  } else {
+                    echo "Error: " . $sql2 . "<br>" . mysqli_error($connection);
+                  }
 }
 else{
 		  echo "Error:1 " . $sql . "<br>" . $connection->error;

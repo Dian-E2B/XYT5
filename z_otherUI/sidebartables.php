@@ -45,12 +45,12 @@
                 <p>Orders</p>
             </a>
         </li>
-        <li>
+        <!-- <li>
             <a href="Records.php">
               <i class="fad fa-cabinet-filing"></i></i>
                 <p>Records</p>
             </a>
-        </li>
+        </li> -->
     </ul>
 </div>
 </div>
