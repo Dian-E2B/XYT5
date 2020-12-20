@@ -44,7 +44,7 @@ if ($returned != "") {
 }
 
 
-$sql= "SELECT p.product_id, p.name, p.description, p.stocks, p.price, u.unit_type,
+$sql= "SELECT p.product_id, p.name, p.description, p.stocks, p.price,(p.stocks*price) as Totalsales,u.unit_type,
             p.SKU, CAST(p.date_added AS DATE) date_added, a.username, s.company_name, p.status_id, ret.quantity AS returns
             FROM tbl_product p
             LEFT JOIN tbl_pricing u ON p.price_type = u.unit_id
@@ -58,7 +58,26 @@ $sql= "SELECT p.product_id, p.name, p.description, p.stocks, p.price, u.unit_typ
             $str_prod
             $str_sup
             $str_ret
-            ";
+            group by p.product_id;";
+
+
+
+$result1 = $connection->query($sql);
+$total_row1 = $result1->num_rows;
+
+if($total_row1 > 0) {
+  foreach($result1 as $row1) {
+
+      if (isset($row2)) {
+        $row2=$row2+$row1['Totalsales'];
+      }
+      else
+      {
+      $row2=$row1['Totalsales'];
+      }
+
+
+}}
 
 ?>
 
@@ -169,7 +188,20 @@ $sql= "SELECT p.product_id, p.name, p.description, p.stocks, p.price, u.unit_typ
                   <div class="content table-responsive">
                     <div class="row">
                       <table class="table table-hover table-striped" id="tblInventory">
+                        
                         <thead>
+                        <tr style="color:blue;">
+                            <td><b> Profitable Sales:  </td>
+                            <td><b> ₱ <?php if(isset($row2)){
+                                echo $row2;
+                            }
+                            else {
+                                echo "0";
+                            }
+
+
+                             ?></b></td>
+                        </tr>
                           <th>ID</th>
                           <th>Product Name</th>
                           <th>Description</th>
@@ -195,7 +227,7 @@ $sql= "SELECT p.product_id, p.name, p.description, p.stocks, p.price, u.unit_typ
                                   <tr>
                                     <td><?php echo $row['product_id']; ?></td>
                                     <td><?php echo $row['name']; ?></td>
-                                    <td><?php echo $row['description']; ?></td>
+                                    <td style="word-wrap: break-word; width: 200px;"><?php echo $row['description']; ?></td>
                                     <td><?php echo $row['SKU']; ?></td>
                                     <td><?php echo $row['stocks']; ?></td>
                                     <td><?php echo $row['unit_type']; ?></td>

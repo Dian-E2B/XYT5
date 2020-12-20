@@ -95,7 +95,7 @@ if($total_row1 > 0) {
               <div class="card">
 
                 <div class="col-md-10 header">
-                  <h4 class="title">Inventory Reports</h4>
+                  <h4 class="title">Sales Report</h4>
                 </div>
 
                 <div class="row"></div>
