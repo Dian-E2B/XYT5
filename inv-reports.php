@@ -203,7 +203,7 @@ $result_prodtbl = $connection->query($fetch_prodtbl);
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['SKU']; ?></td>
                             <td><?php echo $row['stocks']; ?></td>
-                            <td><?php echo $row['price']; ?></td>
+                            <td>₱ <?php echo $row['price']; ?></td>
                             <td><?php echo $row['unit_type']; ?></td>
                             <td><?php echo $row['company_name']; ?></td>
                             <td><?php echo $row['date_added']; ?></td>

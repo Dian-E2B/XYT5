@@ -63,10 +63,10 @@ if (mysqli_num_rows($result)> 0 ) {//IF CART ID EXITSTED ALREAdy,
 									$sqlupdateprod="update tbl_product set stocks=stocks-'$getproductqty' where product_id='$getproductid';";
 									if (!mysqli_query($connection, $sqlupdateprod)) {
 											echo "Error: " . $sqlupdateprod . "<br>" . mysqli_error($connection);
-											}
-
-  					header("Location:./icons.php");
-
+											}	session_start();
+												$_SESSION['success_message']=".";
+						  					header("Location:./icons.php");
+												exit();
 							} else {
 							  echo "Error: " . $sql2 . "<br>" . mysqli_error($connection);
 							}
@@ -83,8 +83,10 @@ if (mysqli_query($connection, $sql2)) {
 					if (!mysqli_query($connection, $sqlupdateprod)) {
 					    echo "Error: " . $sqlupdateprod . "<br>" . mysqli_error($connection);
 					}
-
+	session_start();
+	$_SESSION['success_message']=".";
   header("Location:./icons.php");
+	exit();
 } else {
   echo "Error: " . $sql2 . "<br>" . mysqli_error($connection);
 }

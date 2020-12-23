@@ -15,14 +15,8 @@ if(isset($_SESSION['user_id']))//!!
  }
 
 
-// if(isset($_POST['loguser_id']))//!!
-// {
-// $var_id = $_POST['loguser_id'];//!!
-//
-// }
-//  else {
-//    echo 'rip';
-//  }
+ date_default_timezone_set("Singapore");
+ $date_today=date('Y-m-d h:m:s');
 
 
 
@@ -38,6 +32,13 @@ if($var_password1==$var_password2){//if_password_matched
 //  echo 'same';
     $sql="update tbl_login set password='$var_password1' where user_id='$var_id'" ;//UPDATE PASSWORD!
     if (mysqli_query($connection, $sql)) {
+
+        //TBL_RECORDS Here
+          $sqlrecord="INSERT INTO TBL_RECORDS(actions,date,user_id) values ('Password has been updated','$date_today','1')";
+          if (!mysqli_query($connection, $sqlrecord)) {
+            echo "Error: RECORDS" . $sqlrecord . "<br>" . mysqli_error($connection);
+          }
+
       $_SESSION['success_message']=".";
        header("Location:./index.php");//!!
        exit();
@@ -151,7 +152,7 @@ if($var_password1==$var_password2){//if_password_matched
 
                     <div class="form-group">
                       <div class="col-11   mx-auto">
-                        <input name="var_password1" style="border-radius: 8px;" type="text" class="form-control"
+                        <input name="var_password1" type="password" style="border-radius: 8px;" type="text" class="form-control"
                         id="inputEmailForm" placeholder="New password" value="" required="" autofocus="">
                       </div>
                     </div>
@@ -161,7 +162,7 @@ if($var_password1==$var_password2){//if_password_matched
                     <!--INPUT -->
                     <div class="form-group">
                       <div class="col-11   mx-auto">
-                        <input name="var_password2" style="border-radius: 8px;" type="text" class="form-control"
+                        <input name="var_password2" type="password" style="border-radius: 8px;" type="text" class="form-control"
                         id="inputEmailForm" placeholder="Confirm new password" value=""required="" autofocus="">
                       </div>
                     </div>

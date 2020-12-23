@@ -46,6 +46,12 @@
             </a>
         </li>
         <li>
+            <a href="Records.php">
+              <i class="fad fa-cabinet-filing"></i></i>
+                <p>Records</p>
+            </a>
+        </li>
+        <li>
             <a style="display:none;" href="notifications.html">
                 <i class="pe-7s-bell"></i>
                 <p>TEMP</p>

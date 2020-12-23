@@ -135,7 +135,7 @@ body:not(.modal-open){
                                                     <?php echo $row['description']; ?></td>
 
                                                 <td class="" style=" word-wrap: break-all;">
-                                                    <?php echo $row['price']; ?> ₱</td>
+                                                  ₱  <?php echo $row['price']; ?></td>
                                                 <td style=" word-wrap: break-all;"><?php echo $row['unit_type']; ?></td>
                                                 <td style=" word-wrap: break-all;"><?php echo $row['sku']; ?></td>
                                                 <td class="" style=" word-wrap: break-word;"><?php echo $row['company_name']; ?></td>
@@ -233,7 +233,7 @@ $(document).ready(function(){
 
 $('#exampleModals').on('hide.bs.modal', function() {
     $('#exampleModals').removeData();
-})
+});
 $('#exampleModals').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = button.data('id') // Extract info from data-* attributes
@@ -253,7 +253,7 @@ $('#exampleModals').on('show.bs.modal', function(event) {
             console.log(err);
         }
     });
-})
+});
 
 function success() {
   $.notify({

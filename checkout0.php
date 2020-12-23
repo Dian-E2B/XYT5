@@ -393,7 +393,7 @@ $var_supertotal=$var_total-$var_discountload;
     var integer1 = parseInt(inputVal, 10);
     var intege2 = parseInt(inputVal2, 10);
     if (integer1<intege2){
-      alert("Invalid Cash. Must be higher than total ammount");
+      alert("Cash Must be higher than total amount");
     }
     else {
        document.getElementById("myForm").submit();
@@ -407,7 +407,7 @@ $var_supertotal=$var_total-$var_discountload;
   var intege2 = parseInt(inputVal2, 10);
 
   if (integer1<intege2){
-    alert("Invalid Cash. Must be higher than total amount");
+    alert("Cash Must be higher than total amount");
   }
   else {
      document.getElementById("myForm").submit();

@@ -10,13 +10,20 @@ $result_prod = $connection->query($fetch_prod);
 $fetch_pymnt="SELECT payment_type FROM tbl_payment";
 $result_pymnt = $connection->query($fetch_pymnt);
 
-$fetch_saletbl="SELECT * FROM saleable";
+$fetch_saletbl="SELECT * FROM saleable
+                WHERE date BETWEEN CURRENT_DATE - 7 AND CURRENT_DATE";
 $result_saletbl = $connection->query($fetch_saletbl);
 
-$fetch_saletbl2="SELECT sum(total) as totalsales FROM saleable";
-$result_saletbl02= $connection->query($fetch_saletbl2); //GET TOTAL
-$result_saletbl002=mysqli_fetch_assoc($result_saletbl02);
-$total=$result_saletbl002['totalsales'];
+
+$res_sales = $connection->query($fetch_saletbl);
+$total_price = 0;
+$total_row1 = $res_sales->num_rows;
+if($total_row1 > 0) {
+  foreach($res_sales as $row1) {
+    $total_price += $row1['total'];
+  }
+}
+
 
 ?>
 
@@ -112,6 +119,11 @@ $total=$result_saletbl002['totalsales'];
                     <div class="row">
                       <table class="table table-hover table-striped">
                         <thead>
+
+                          <tr style="color:blue;">
+                            <td><b> Sales (last 7 days)  </td>
+                            <td><b> ₱ <?php echo $total_price;?></b></td>
+                          </tr>
 
                           <th>Order #</th>
                           <th>Product</th>

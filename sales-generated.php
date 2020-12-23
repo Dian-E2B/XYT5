@@ -36,7 +36,7 @@ if ($payment != "") {
 }
 
 $sql= "SELECT ord.order_log_id, p.name, p.SKU, ol.qty,
-        	p.price, ol.qty*p.price AS total,sum(ol.qty*p.price) as totalsales, pay.payment_type,
+        	p.price, ol.qty*p.price AS total, pay.payment_type,
         	CAST(ord.date AS DATE) date
         	FROM tbl_orderline ol
         	LEFT JOIN tbl_product p ON ol.product_id = p.product_id
@@ -47,76 +47,30 @@ $sql= "SELECT ord.order_log_id, p.name, p.SKU, ol.qty,
           $str_end
           $str_product
           $str_payment
-          group by ord.order_log_id
           EXCEPT
             SELECT ord.order_log_id, p.name, p.SKU, ol.qty,
-            p.price, ol.qty*p.price AS total,sum(ol.qty*p.price) as totalsales, pay.payment_type,
+            p.price, ol.qty*p.price AS total, pay.payment_type,
             CAST(ord.date AS DATE) date
             FROM tbl_orderline ol
             LEFT JOIN tbl_product p ON ol.product_id = p.product_id
             LEFT JOIN tbl_orderdetails ord ON ol.order_log_id = ord.order_log_id
             LEFT JOIN tbl_payment pay ON ord.payment_id = pay.payment_id
             WHERE pay.payment_type = 'cheque'
-            AND ord.date > CURRENT_DATE - 4
-
+            AND ord.date > CURRENT_DATE - 3
           ";
 
 
-          // $fetch_saletbl2="SELECT sum(total) as totalsales FROM saleable";
-        //  $result_saletbl02= $connection->query($fetch_saletbl2); //GET TOTAL
-          // $result_saletbl002=mysqli_fetch_assoc($result_saletbl02);
-          // $total=$result_saletbl002['totalsales'];
-//   echo $sql ." / "."<br>";;
-//
-//
-//
-//           echo $str_start." / ";
-//                 $str_end." / ";
-//           echo $str_product." / ";
-//           echo $str_payment ." / " ."<br>";
-//
-//
-//
-//
-//
-//
-//           $result = $connection->query($sql);
-//           $total_row = $result->num_rows;
-//
-//           if($total_row > 0) {
-//             foreach($result as $row) {
-//   echo $row['order_log_id']." / ";
-//         echo $row['name']." / ";
-//   echo $row['SKU']." / ";
-//   echo $row['qty']." / ";
-// echo $row['price']." / ";
-//           echo $row['total']." / ";
-//           echo $row['payment_type']." / ";
-// echo $row['date']." / ". "<br>";
 
-// }
-// }
-
-
-$result1 = $connection->query($sql);
-$total_row1 = $result1->num_rows;
-
+$res_sales = $connection->query($sql);
+$total_price = 0;
+$total_row1 = $res_sales->num_rows;
 if($total_row1 > 0) {
-  foreach($result1 as $row1) {
-
-      if (isset($row2)) {
-        $row2=$row2+$row1['totalsales'];
-      }
-      else
-      {
-      $row2=$row1['totalsales'];
-      }
-
-
-}}
-
-
+  foreach($res_sales as $row1) {
+    $total_price += $row1['total'];
+  }
+}
 ?>
+
 <head>
     <?php include 'z_otherUI/mainhead.php' ?>
 
@@ -282,16 +236,8 @@ if($total_row1 > 0) {
 
                         <thead>
                           <tr style="color:blue;">
-                            <td><b> Totalsales  </td>
-                            <td><b> ₱ <?php if(isset($row2)){
-                                echo $row2;
-                            }
-                            else {
-                                echo "0";
-                            }
-
-
-                             ?></b></td>
+                            <td><b> Total Sales  </td>
+                            <td><b> ₱ <?php echo $total_price;?></b></td>
                         </tr>
 
                           <th>Order #</th>
@@ -323,8 +269,6 @@ if($total_row1 > 0) {
                                     <td><?php echo $row['payment_type']; ?></td>
                                     <td><?php echo $row['date']; ?></td>
                                   </tr>
-
-
                               <?php
                                 }
                               }
@@ -341,7 +285,6 @@ if($total_row1 > 0) {
                       </table>
                     </div>
                   </div> <!-- table -->
-
 
                 </div> <!-- content table-responsive -->
               </div> <!-- card -->

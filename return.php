@@ -4,7 +4,7 @@ session_start();
 
 
 $var_orderlogid=$_POST['thisorderlog'];
-echo $var_orderlogid. "<br>";
+//echo $var_orderlogid. "<br>";
 // echo $_SESSION['username']."<br>";
 if(isset($_POST['submit'])){
 $SQLPASSWORD="SELECT password from tbl_login where username='admin'";
@@ -54,7 +54,16 @@ if ($VARPASS==$X) {
             echo "Error: " . $SQL4 . "<br>" . mysqli_error($connection);
           }
           else {
-              header("Location:./ordersummary.php");
+            //TBL_RECORDS HERE
+            $sqlrecord="INSERT INTO TBL_RECORDS(actions,date,user_id) values('Products has been returned. ','$date_today','1')";
+                if (!mysqli_query($connection, $sqlrecord)) {
+                  echo "Error: " . $sqlrecord . "<br>" . mysqli_error($connection);
+                }
+                echo "MACTHDE!";
+                $_SESSION['success_message']="Invalid username or password.";
+                header("Location:./ordersummary.php");
+                exit();
+
           }
 
 
@@ -63,10 +72,10 @@ if ($VARPASS==$X) {
   } else {
     echo "0 results";
   }
-  echo "MACTHDE!";
-  $_SESSION['success_message']="Invalid username or password.";
-  header("Location:./ordersummary.php");
-  exit();
+  // echo "MACTHDE!";
+  // $_SESSION['success_message']="Invalid username or password.";
+  // header("Location:./ordersummary.php");
+  // exit();
 }else {
   echo "NOT MATCHED!";
   $_SESSION['error_message']="Invalid username or password.";

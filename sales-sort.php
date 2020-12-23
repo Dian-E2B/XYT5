@@ -136,10 +136,10 @@ if($total_row1 > 0) {
                       <table class="table table-hover table-striped" id="tblInventory">
 
                         <thead>
-                          
+
                           <tr style="color:blue;">
                             <td><b>Totalsales</b></td>
-                            <td ><b><?php if(isset($row2)){
+                            <td ><b>₱ <?php if(isset($row2)){
                                 echo $row2;
                             }
                             else {
@@ -169,8 +169,8 @@ if($total_row1 > 0) {
                                     <td><?php echo $row['name']; ?></td>
                                     <td><?php echo $row['SKU']; ?></td>
                                     <td><?php echo $row['qty']; ?></td>
-                                    <td><?php echo $row['price']; ?></td>
-                                    <td><?php echo $row['total']; ?></td>
+                                    <td>₱ <?php echo $row['price']; ?></td>
+                                    <td>₱ <?php echo $row['total']; ?></td>
                                   </tr>
 
                               <?php

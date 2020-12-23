@@ -1,8 +1,9 @@
 <?php
 include 'connection.php';
+session_start();
 date_default_timezone_set("Singapore");
-$date_today=date('Y-m-d');
-$date_today1=date('Y-m-d');
+$date_today=date('Y-m-d h:m:s');
+
 
 
 //FIXED ALL!
@@ -43,7 +44,7 @@ $sql= "UPDATE tbl_product
  WHERE product_id = '$getproductid'";
 
 
-if ($result = $connection->query($sql)) {
+if ($result =mysqli_query($connection, $sql)) {
 
   $sqlr="SELECT *FROM TBL_LOGIN WHERE username='$getadmin';";
   $resultr = mysqli_query($connection, $sqlr);
@@ -52,15 +53,19 @@ if ($result = $connection->query($sql)) {
   }else {
         $row = mysqli_fetch_assoc($resultr);
         $val_adminid=$row['User_ID'];
-        $sql2="INSERT into tbl_records(actions,date,user_id) values('Number $getproductid Product has been updated','$date_today1','$val_adminid')";
-    	if (!mysqli_query($connection, $sql2)) {
-    		echo "Error: 2" . $sql2 . "<br>" . mysqli_error($connection);
-    	}else {
+
+        $sqlrecord="INSERT into tbl_records(actions,date,user_id) values('Number $getproductid Product has been updated.','$date_today','1');";
+    	if (!mysqli_query($connection, $sqlrecord))
+      {
+    		echo "Error: 2" . $sqlrecord . "<br>" . mysqli_error($connection);
+    	}
+      
+        //echo $date_today;
         session_start();
         $_SESSION['success_message']=".";
         header("Location:../table.php");
         exit();
-    	}
+    	
   }
 
 

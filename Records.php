@@ -4,10 +4,12 @@
 include 'z_execute/connection.php';
 session_start();
 
+date_default_timezone_set("Singapore");
+$date_today=date('Y-m-d h:m:s');
   //from search(navbar.php)
 
   //LOAD DATA
-        $sqlshow_records="SELECT * from tbl_records";
+        $sqlshow_records="SELECT Actions,Date,User_id from tbl_records order by log_id DESC;";
         $resultrecords = mysqli_query($connection, $sqlshow_records);
         //$row = mysqli_fetch_assoc($resultrecords)
 
@@ -203,7 +205,11 @@ body:not(.modal-open){
 
 $('#dataTable').dataTable( {
 //  "searching": false
-
+"order": [],
+   "columnDefs": [ {
+     "targets"  : 'Date',
+     "orderable": false,
+   }]
 } );
 
 

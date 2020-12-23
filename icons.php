@@ -72,6 +72,11 @@ if (mysqli_num_rows($result)> 0 ) {
     .modal.show .modal-dialog-aside {
         transform: translateX(0);
     }
+
+
+		body:not(.modal-open){
+		  padding-right: 0px !important;
+		}
     </style>
 </head>
 
@@ -156,6 +161,20 @@ if (mysqli_num_rows($result)> 0 ) {
 												<body onload="error('top','center')">
 												<?php
 												unset($_SESSION['error_message']);
+												}
+												?>
+
+
+											</div>
+											<div class="">
+
+												<?php
+												if(isset($_SESSION['success_message']))
+												{
+												?>
+												<body onload="sucess('top','center')">
+												<?php
+												unset($_SESSION['success_message']);
 												}
 												?>
 
@@ -369,6 +388,22 @@ function errorexceed() {
 
     offset: 50,
     type: 'danger',
+    placement: {
+      from: "top",
+      align: "center"
+    }
+  });
+}
+
+function sucess() {
+  $.notify({
+		icon: 'fad fa-cart-plus',
+    message:'Item added to cart.'
+  }, {
+    // settings
+
+    offset: 50,
+    type: 'info',
     placement: {
       from: "top",
       align: "center"

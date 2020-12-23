@@ -96,12 +96,12 @@ $results1 = mysqli_query($connection, $sql1);
 									<div class="">
 
 										<?php
-										if(isset($_SESSION['error_message']))
+										if(isset($_SESSION['success_message']))
 										{
 										?>
 										<body onload="success('top','center')">
 										<?php
-										unset($_SESSION['error_message']);
+										unset($_SESSION['success_message']);
 										}
 										?>
 
@@ -225,7 +225,19 @@ $results1 = mysqli_query($connection, $sql1);
 <script>
 $('#exampleModals').on('hide.bs.modal', function() {
     $('#exampleModals').removeData();
-})
+});
+
+
+$('#dataTable').dataTable( {
+//  "searching": false
+"order": [],
+   "columnDefs": [ {
+     "targets"  : 'order log',
+     "orderable": false,
+   }]
+} );
+
+
 $('#exampleModals').on('show.bs.modal', function(event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient = button.data('id') // Extract info from data-* attributes

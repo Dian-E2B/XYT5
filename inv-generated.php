@@ -188,7 +188,7 @@ if($total_row1 > 0) {
                   <div class="content table-responsive">
                     <div class="row">
                       <table class="table table-hover table-striped" id="tblInventory">
-                        
+
                         <thead>
                         <tr style="color:blue;">
                             <td><b> Profitable Sales:  </td>
@@ -204,7 +204,7 @@ if($total_row1 > 0) {
                         </tr>
                           <th>ID</th>
                           <th>Product Name</th>
-                          <th>Description</th>
+                          <th style="display:none">Description</th>
                           <th>SKU</th>
                           <th>Quantity</th>
                           <th>Unit</th>
@@ -227,11 +227,11 @@ if($total_row1 > 0) {
                                   <tr>
                                     <td><?php echo $row['product_id']; ?></td>
                                     <td><?php echo $row['name']; ?></td>
-                                    <td style="word-wrap: break-word; width: 200px;"><?php echo $row['description']; ?></td>
+                                    <td style="word-wrap: break-word; width: 150px; display:none;"><?php echo $row['description']; ?></td>
                                     <td><?php echo $row['SKU']; ?></td>
                                     <td><?php echo $row['stocks']; ?></td>
                                     <td><?php echo $row['unit_type']; ?></td>
-                                    <td><?php echo $row['price']; ?></td>
+                                    <td>₱ <?php echo $row['price']; ?></td>
                                     <td><?php echo $row['company_name']; ?></td>
                                     <td><?php echo $row['username']; ?></td>
                                     <td><?php echo $row['date_added']; ?></td>

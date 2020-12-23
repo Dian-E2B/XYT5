@@ -37,19 +37,6 @@ if($confirm_result){
 else {
 	$_SESSION['error_message']="Incorrect username or password";
 	header("Location:../index.php");
-
 }
-	//$sql2="SELECT  *from student_info WHERE student_id='$userid'";
-	//$result2=mysqli_query($connection,$sql2);
-	//$users2=mysqli_fetch_assoc($result2);
-	//$_SESSION['student_id']=$userid;
-
-//	$getusername=$confirm_result['username'];
-//	$_SESSION['username']=$getusername;
-
-//	header("Location:../tables.php");
-//else{
-//		 echo "ERROR!";
-//	 }
 
 ?>

@@ -2,7 +2,7 @@
 <?php
 include 'z_execute/connection.php';
 session_start();
-$sqlshow_allcart="select product_id,p.name,qty,c.price,subtotal from tbl_cart c join tbl_product p using(product_id) where qty > 0";
+$sqlshow_allcart="select product_id,p.name,qty,p.stocks,c.price,subtotal from tbl_cart c join tbl_product p using(product_id) where qty > 0";
 $result = mysqli_query($connection, $sqlshow_allcart);
 
 if(mysqli_num_rows($result) == 0){
@@ -76,7 +76,7 @@ input[type=none]:focus {
               </a>
             </li>
 
-            
+
           </ul>
         </div>
       </div>
@@ -166,7 +166,7 @@ input[type=none]:focus {
 
                                                 <td class="example" style="font-size:15px:"><?php echo $row['product_id']; ?></td>
                                                 <td style="font-size:15px"><?php echo $row['name']; ?></td>
-                                                <td style="font-size:15px">In stock</td>
+                                                <td style="font-size:15px"><?php echo $row['stocks']; ?></td>
                                                 <td style="font-size:15px;" class="text-center"><?php echo $row['qty']; ?></td>
                                                       <!-- PLUS AND MINUS BTN -->
                                                 <td><button style="border:none; background:none;" class="btnadd" value="<?php echo $row['product_id']; ?>"><i style="font-size:25px; color: yellowgreen;" class="fas fa-plus-square"></i></button>&nbsp;&nbsp;
@@ -175,7 +175,7 @@ input[type=none]:focus {
                                                 <td style="font-size:15px" class="text-right">
                                                 <?php echo $row['price']; ?> ₱</td>
                                                 <td style="font-size:15px" class="text-center">
-                                                  <a href="yourcart0.php?deleteID=<?php echo $row['product_id']; ?>" class="btn btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                  <a href="yourcart0.php?deleteID=<?php echo $row['product_id']; ?>" class="btn btn-fill btn-danger"><i class="fa fa-trash"></i></a>
                                                   </button> </td>
                                                 </tr>
 
@@ -309,7 +309,7 @@ $(".btnadd").on("click", function() {
     async:false,
       success: function(data) {
 	     console.log(data);
-      alert(data);
+      //alert(data);
     },
     error: function(xhr, textStatus, error) {
       // alert(xhr.statusText);

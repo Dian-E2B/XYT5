@@ -36,6 +36,7 @@ if (isset($_POST['paymentradio'])){
               $sqlappendorders="INSERT into tbl_orderline(order_log_id,product_id,qty) SELECT order_log_id,product_id,qty from tbl_cart;";
                 if (!mysqli_query($connection, $sqlappendorders)) {
                   echo "Error: 1 " . $sqlappendorders . "<br>" . mysqli_error($connection);
+
                 }
                 else{
 
@@ -43,10 +44,13 @@ if (isset($_POST['paymentradio'])){
                     if (!mysqli_query($connection, $sqlclear)) {
                       echo "Error: 2" . $sqlclear . "<br>" . mysqli_error($connection);
                     }else {
-                       header("Location:./ordersummary.php");
+                          $sqlrecord="INSERT INTO TBL_RECORDS(actions,date,user_id) Values ('A transaction has been made','$date_today','1')";
+                          if (!mysqli_query($connection, $sqlrecord)) {
+                            echo "Error: RECORDS" . $sqlrecord . "<br>" . mysqli_error($connection);
+                          }
+                           header("Location:./ordersummary.php");
 
-
-
+                           //TBL_RECORDS
                     }
 
                 }
@@ -80,8 +84,12 @@ if (isset($_POST['paymentradio'])){
                         if (!mysqli_query($connection, $sqlclear)) {
                           echo "Error: 5" . $sqlclear . "<br>" . mysqli_error($connection);
                         }else{
+                          $sqlrecord="INSERT INTO TBL_RECORDS(actions,date,user_id) Values ('A transaction has been made','$date_today','1')";
+                          if (!mysqli_query($connection, $sqlrecord)) {
+                            echo "Error: RECORDS" . $sqlrecord . "<br>" . mysqli_error($connection);
+                          }
                              header("Location:./ordersummary.php");
-                             
+
                         }
 
                     }

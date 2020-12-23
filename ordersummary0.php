@@ -15,8 +15,25 @@ left join tbl_payment f using(payment_id)
 left join tbl_product g using(product_id)
 WHERE order_log_id='$var'";
 $sql_result1=mysqli_query($connection,$sql1);
+								if($sql_result1){
+										$sqlreturn="SELECT Status FROM tbl_orderdetails WHERE Status IS NULL and order_log_id=$var";
+										$sql_result3=mysqli_query($connection,$sqlreturn);
+										$row3 = mysqli_fetch_assoc($sql_result3);
+									//	echo $var;
+										if (empty($row3)){
+											$var1=0;
+										}
+										else{
+
+										$var1=1;
+										}
+								}
 $sql_result2=mysqli_query($connection,$sql1);//WHILE LOOP
 $row2 = mysqli_fetch_assoc($sql_result1);
+
+/*<?= ($row['stocks'] <= 30 ? 'bold' : 'none') ?>*/
+
+
 
 }
 else{
@@ -29,7 +46,7 @@ else{
 	 <div class="modal-body">
 
 		 <table class="table">
-
+			 		<input style="display:none;" value="<?php echo $var1; ?>">
 					 <tr>
 						 <th style="" >Name: </th>
 						 <td style="" ><?php echo $row2['name']; ?></td>
@@ -53,6 +70,8 @@ else{
 			 <tr>
 				<th style="" >Payment: </th>
 				<td style="" ><?php echo $row2['payment_type']; ?> </td>
+
+
 			</tr>
 			 <tr>
 			 <th style="background-color:	#DCDCDC" >Products</th>
@@ -81,7 +100,7 @@ else{
 	 </div>
 	 <div class="modal-footer">
 			 <button style="border:none;" type="button" class="btn btn-fill btn-secondary" data-dismiss="modal">Close</button>
-			  <button onclick="myFunction()" type="button" form="form1" value="Submit" style="float:left; background-color: #FF4500 ; color: white; border: none;" class="btn btn-secondary">Tagged as Returned</button>
+			  <button onclick="myFunction()" type="button" form="form1" value="Submit" style="display:<?= ($var1==1 ? 'block' : 'none') ?>; float:left; background-color: #FF4500 ; color: white; border: none;" class="btn btn-secondary">Tagged as Returned</button>
 	 </div>
 
 
